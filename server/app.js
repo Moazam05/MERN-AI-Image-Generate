@@ -8,6 +8,7 @@ require("dotenv").config();
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
 const postRouter = require("./routes/postRoutes");
+const dalleRouter = require("./routes/dalleRoutes");
 
 const corsOptions = {
   origin: "*",
@@ -34,6 +35,7 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use("/api/v1/posts", postRouter);
+app.use("/api/v1/dalle", dalleRouter);
 
 // PRODUCTION SETUP
 if (process.env.NODE_ENV === "production") {
