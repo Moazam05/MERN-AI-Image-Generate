@@ -7,7 +7,7 @@ require("dotenv").config();
 // Custom Imports
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./controllers/errorController");
-// const userRouter = require("./routes/userRoutes");
+const postRouter = require("./routes/postRoutes");
 
 const corsOptions = {
   origin: "*",
@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "development") {
 }
 app.use(
   express.json({
-    limit: "3mb",
+    limit: "50mb",
   })
 );
 
@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 // ROUTES
-// app.use("/api/v1/users", userRouter);
+app.use("/api/v1/posts", postRouter);
 
 // PRODUCTION SETUP
 if (process.env.NODE_ENV === "production") {
